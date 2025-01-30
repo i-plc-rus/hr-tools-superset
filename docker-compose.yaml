@@ -31,6 +31,8 @@ services:
       - redis
     networks:
       - dokploy-network
+    volumes:
+      - ./docker/requirements-local.txt:/app/docker/requirements-local.txt
 
 volumes:
   postgres_data:
