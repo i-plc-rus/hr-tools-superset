@@ -3,7 +3,7 @@ version: '3.8'
 services:
   postgres:
     image: postgres:13
-    container_name: superset_postgres
+    container_name: superset_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
