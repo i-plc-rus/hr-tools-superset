@@ -76,9 +76,9 @@ services:
     env_file:
       - path: .env
     depends_on:
-      db:
+      superset-db:
         condition: service_started
-      redis:
+      superset-redis:
         condition: service_started
     user: "root"
     volumes: *superset-volumes
