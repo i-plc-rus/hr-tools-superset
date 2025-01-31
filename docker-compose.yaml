@@ -33,6 +33,7 @@ services:
       - dokploy-network
     volumes:
       - ./docker/requirements-local.txt:/app/docker/requirements-local.txt
+      - ./docker/pythonpath_dev/superset_config.py:/app/superset/superset_config.py
 
 volumes:
   postgres_data:
