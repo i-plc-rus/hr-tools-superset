@@ -28,14 +28,14 @@ x-superset-volumes:
   - superset_home:/app/superset_home
 
 services:
-  redis:
+  superset-redis:
     image: redis:7
     container_name: superset_cache
     restart: unless-stopped
     volumes:
       - redis:/data
 
-  db:
+  superset-db:
     env_file:
       - path: docker/.env # default
         required: true
@@ -47,6 +47,8 @@ services:
     volumes:
       - db_home:/var/lib/postgresql/data
       - ./docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    networks:
+      - dokploy-network
 
   superset:
     env_file:
@@ -64,6 +66,8 @@ services:
     volumes: *superset-volumes
     environment:
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
+    networks:
+      - dokploy-network
 
   superset-init:
     image: *superset-image
@@ -83,6 +87,8 @@ services:
     environment:
       SUPERSET_LOAD_EXAMPLES: "${SUPERSET_LOAD_EXAMPLES:-yes}"
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
+    networks:
+      - dokploy-network
 
   superset-worker:
     image: *superset-image
@@ -104,6 +110,8 @@ services:
         ]
     environment:
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
+    networks:
+      - dokploy-network
 
   superset-worker-beat:
     image: *superset-image
@@ -121,6 +129,8 @@ services:
       disable: true
     environment:
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
+    networks:
+      - dokploy-network
 
 volumes:
   superset_home:
@@ -129,3 +139,7 @@ volumes:
     external: false
   redis:
     external: false
+
+networks:
+  dokploy-network:
+    external: true
