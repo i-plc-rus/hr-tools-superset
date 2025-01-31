@@ -37,10 +37,7 @@ services:
 
   superset-db:
     env_file:
-      - path: docker/.env # default
-        required: true
-      - path: docker/.env-local # optional override
-        required: false
+      - path: .env
     image: postgres:15
     container_name: superset_db
     restart: unless-stopped
