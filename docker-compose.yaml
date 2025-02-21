@@ -65,6 +65,7 @@ services:
     volumes: *superset-volumes
     environment:
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
+      SUPERSET_FEATURE_FLAGS: '{"EMBEDDED_SUPERSET": True, "ENABLE_JAVASCRIPT_CONTROLS": True}'
     networks:
       - dokploy-network
 
