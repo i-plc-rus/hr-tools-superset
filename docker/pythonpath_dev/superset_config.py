@@ -32,7 +32,10 @@ logger = logging.getLogger()
 FEATURE_FLAGS = {
     "EMBEDDED_SUPERSET": True,
     "ENABLE_JAVASCRIPT_CONTROLS": True,
+    "ALERT_REPORTS": True
 }
+
+GUEST_TOKEN_JWT_SECRET = "test-guest-secret-change-me"
 
 # Настройки CORS (Cross-Origin Resource Sharing)
 ENABLE_CORS = True
@@ -107,7 +110,6 @@ class CeleryConfig:
 
 CELERY_CONFIG = CeleryConfig
 
-FEATURE_FLAGS = {"ALERT_REPORTS": True}
 ALERT_REPORTS_NOTIFICATION_DRY_RUN = True
 WEBDRIVER_BASEURL = "http://superset:8088/"  # When using docker compose baseurl should be http://superset_app:8088/  # noqa: E501
 # The base URL for the email report hyperlinks.
