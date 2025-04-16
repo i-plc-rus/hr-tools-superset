@@ -46,6 +46,9 @@ CORS_OPTIONS = {
     'origins': ['*'],  # Укажите домен вашего фронтенда вместо '*'
 }
 
+OVERRIDE_HTTP_HEADERS = {'X-Frame-Options': 'ALLOWALL'}
+HTTP_HEADERS={"X-Frame-Options":"ALLOWALL"}
+
 DATABASE_DIALECT = os.getenv("DATABASE_DIALECT")
 DATABASE_USER = os.getenv("DATABASE_USER")
 DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
