@@ -48,6 +48,12 @@ CORS_OPTIONS = {
 
 OVERRIDE_HTTP_HEADERS = {'X-Frame-Options': 'ALLOWALL'}
 HTTP_HEADERS={"X-Frame-Options":"ALLOWALL"}
+TALISMAN_ENABLED = True
+TALISMAN_CONFIG = {
+    "content_security_policy": {    
+         "frame-ancestors": ["*.hr-tools.pro"],
+    }
+}
 
 DATABASE_DIALECT = os.getenv("DATABASE_DIALECT")
 DATABASE_USER = os.getenv("DATABASE_USER")
