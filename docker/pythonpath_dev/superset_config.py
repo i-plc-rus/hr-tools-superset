@@ -36,6 +36,10 @@ FEATURE_FLAGS = {
 }
 
 GUEST_TOKEN_JWT_SECRET = "test-guest-secret-change-me"
+GUEST_ROLE_NAME = "Gamma"
+GUEST_TOKEN_JWT_ALGO = "HS256"
+GUEST_TOKEN_JWT_EXP_SECONDS = 300
+
 
 # Настройки CORS (Cross-Origin Resource Sharing)
 ENABLE_CORS = True
