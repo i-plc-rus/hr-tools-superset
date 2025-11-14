@@ -148,6 +148,50 @@ if os.getenv("CYPRESS_CONFIG") == "true":
 
     sys.path.pop(0)
 
+# цветовые схемы
+CUSTOM_COLOR_SCHEMES = {
+    "HRTools": [
+        "#6094F5",  # синий (primary)
+        "#7065F6",  # фиолетовый
+        "#F0AE66",  # оранжевый
+        "#A2E167",  # лаймовый
+        "#6EC372",  # зелёный
+        "#67C2CC",  # бирюза
+        "#D95B69",  # красный
+        "#E9A7A4",  # розово-красный
+        "#9EB0D7",  # светло-синий
+        "#ABCDD2",  # светлая бирюза
+        "#7098F7",  # голубовато-синий
+        "#D7CD6B",  # жёлто-оливковый
+    ],
+}
+
+THEME_OVERRIDES = {
+    "typography": {
+        "families": {
+            "sans": '"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif',
+        }
+    },
+ "borderRadius": 16,
+    "colors": {
+        # Бренд
+        "primary":   {"base": "#6094F5"},
+        "secondary": {"base": "#7065F6"},
+        # Семантика
+        "success": {"base": "#27AE60"},
+        "warning": {"base": "#F2C94C"},
+        "error":   {"base": "#EB5757"},
+        # Нейтральные / фоновые
+        "grayscale": {
+            "base":   "#F2F5F9",  # общий фон страниц
+            "light2": "#FFFFFF",  # фон карточек/чартов
+            "light1": "#E2E5EC",  # бордеры/разделители
+            "dark1":  "#1F2937",  # основной текст
+            "dark2":  "#6B7280",  # вторичный текст
+        },
+    },
+}
+
 #
 # Optionally import superset_config_docker.py (which will have been included on
 # the PYTHONPATH) in order to allow for local settings to be overridden
