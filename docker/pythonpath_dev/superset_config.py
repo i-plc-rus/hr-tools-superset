@@ -148,49 +148,54 @@ if os.getenv("CYPRESS_CONFIG") == "true":
 
     sys.path.pop(0)
 
-# цветовые схемы
-CUSTOM_COLOR_SCHEMES = {
-    "HRTools": [
-        "#6094F5",  # синий (primary)
-        "#7065F6",  # фиолетовый
-        "#F0AE66",  # оранжевый
-        "#A2E167",  # лаймовый
-        "#6EC372",  # зелёный
-        "#67C2CC",  # бирюза
-        "#D95B69",  # красный
-        "#E9A7A4",  # розово-красный
-        "#9EB0D7",  # светло-синий
-        "#ABCDD2",  # светлая бирюза
-        "#7098F7",  # голубовато-синий
-        "#D7CD6B",  # жёлто-оливковый
-    ],
-}
+# ===== HRTools: палитры и тема =====
+# Палитра для категориальных графиков
+EXTRA_CATEGORICAL_COLOR_SCHEMES = [
+    {
+        "id": "HRTools",            # системное имя
+        "label": "HRTools",         # как будет видно в UI
+        "colors": [
+            "#6094F5", "#7065F6", "#F0AE66", "#A2E167",
+            "#6EC372", "#67C2CC", "#D95B69", "#E9A7A4",
+            "#9EB0D7", "#ABCDD2", "#7098F7", "#D7CD6B",
+        ],
+        "description": "HR Tools categorical palette",
+    },
+]
+DEFAULT_COLOR_SCHEME = "HRTools"
 
+# (опц.) Градиент для heatmap/контуров
+EXTRA_SEQUENTIAL_COLOR_SCHEMES = [
+    {
+        "id": "HRToolsSequential",
+        "label": "HRTools Sequential",
+        "colors": ["#E9F1FF", "#BFD7FF", "#8DB7FF", "#6094F5", "#2F6FE0"],
+    }
+]
+
+# Тема (шрифты/базовые цвета UI)
 THEME_OVERRIDES = {
     "typography": {
         "families": {
             "sans": '"Inter","SF Pro Text",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif',
         }
     },
- "borderRadius": 16,
+    "borderRadius": 16,
     "colors": {
-        # Бренд
-        "primary":   {"base": "#6094F5"},
+        "primary": {"base": "#6094F5"},
         "secondary": {"base": "#7065F6"},
-        # Семантика
-        "success": {"base": "#27AE60"},
-        "warning": {"base": "#F2C94C"},
-        "error":   {"base": "#EB5757"},
-        # Нейтральные / фоновые
         "grayscale": {
-            "base":   "#F2F5F9",  # общий фон страниц
-            "light2": "#FFFFFF",  # фон карточек/чартов
-            "light1": "#E2E5EC",  # бордеры/разделители
+            "base":   "#F2F5F9",  # фон страницы
+            "light2": "#FFFFFF",  # фон карточек
+            "light1": "#E2E5EC",  # бордеры
             "dark1":  "#1F2937",  # основной текст
             "dark2":  "#6B7280",  # вторичный текст
         },
     },
 }
+
+# Явный маркер, что конфиг подхватился: поменяем заголовок приложения
+APP_NAME = "Superset · HRTools"
 
 #
 # Optionally import superset_config_docker.py (which will have been included on
