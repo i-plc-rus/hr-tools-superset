@@ -173,6 +173,13 @@ EXTRA_SEQUENTIAL_COLOR_SCHEMES = [
     }
 ]
 
+# Языки
+LANGUAGES = {
+    "ru": {"flag": "ru", "name": "Русский"},
+    "en": {"flag": "us", "name": "English"}    
+}
+BABEL_DEFAULT_LOCALE = "ru"
+
 # Тема (шрифты/базовые цвета UI)
 THEME_OVERRIDES = {
     "typography": {
