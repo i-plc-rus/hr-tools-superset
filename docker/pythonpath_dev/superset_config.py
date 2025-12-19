@@ -32,7 +32,8 @@ logger = logging.getLogger()
 FEATURE_FLAGS = {
     "EMBEDDED_SUPERSET": True,
     "ENABLE_JAVASCRIPT_CONTROLS": True,
-    "ALERT_REPORTS": True
+    "ALERT_REPORTS": True,
+    "ENABLE_PERMALINKS": False
 }
 
 GUEST_TOKEN_JWT_SECRET = "test-guest-secret-change-me"
@@ -201,10 +202,6 @@ THEME_OVERRIDES = {
     },
 }
 
-# Отключить permalink для всех дашбордов (ссылка на вкладку)
-FEATURE_FLAGS = {
-    "ENABLE_PERMALINKS": False,
-}
 
 # Явный маркер, что конфиг подхватился: поменяем заголовок приложения
 APP_NAME = "Superset · HRTools"
