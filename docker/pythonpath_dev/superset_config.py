@@ -201,6 +201,11 @@ THEME_OVERRIDES = {
     },
 }
 
+# Отключить permalink для всех дашбордов (ссылка на вкладку)
+FEATURE_FLAGS = {
+    "ENABLE_PERMALINKS": False,
+}
+
 # Явный маркер, что конфиг подхватился: поменяем заголовок приложения
 APP_NAME = "Superset · HRTools"
 
