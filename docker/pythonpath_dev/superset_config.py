@@ -174,6 +174,23 @@ EXTRA_SEQUENTIAL_COLOR_SCHEMES = [
     }
 ]
 
+EXTRA_CSS = """
+.dashboard-component-header a {
+  pointer-events: none !important;
+  cursor: default !important;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.dashboard-component-header .chart-actions {
+  display: none !important;
+}
+
+.dashboard-component-header [aria-label="More options"] {
+  display: none !important;
+}
+"""
+
 # Языки
 LANGUAGES = {
     "ru": {"flag": "ru", "name": "Русский"},
