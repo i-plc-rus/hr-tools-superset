@@ -62,7 +62,10 @@ TALISMAN_CONFIG = {
     }
 }
 
-ALLOWED_REFERRERS = ["*.hr-tools.pro"]
+# ALLOWED_REFERRERS = ["*.hr-tools.pro"]
+REFERER_ALLOWED_DOMAINS = ["https://s.hr-tools.pro", "https://s-demo1.hr-tools.pro"]
+EMBEDDED_ALLOWED_DOMAINS = ["s.hr-tools.pro", "s-demo1.hr-tools.pro"]
+ALLOWED_REFERRERS = ["https://s.hr-tools.pro", "https://s-demo1.hr-tools.pro"]
 
 DASHBOARD_RBAC = True
 
