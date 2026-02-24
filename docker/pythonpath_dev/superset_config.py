@@ -45,7 +45,7 @@ GUEST_TOKEN_JWT_EXP_SECONDS = 300
 
 
 # Настройки CORS (Cross-Origin Resource Sharing)
-ENABLE_CORS = True
+ENABLE_CORS = False
 CORS_OPTIONS = {
     'supports_credentials': True,
     'allow_headers': ['*'],
@@ -55,17 +55,12 @@ CORS_OPTIONS = {
 
 OVERRIDE_HTTP_HEADERS = {'X-Frame-Options': 'ALLOWALL'}
 HTTP_HEADERS={"X-Frame-Options":"ALLOWALL"}
-TALISMAN_ENABLED = True
+TALISMAN_ENABLED = False
 TALISMAN_CONFIG = {
     "content_security_policy": {    
          "frame-ancestors": ["*.hr-tools.pro"],
     }
 }
-
-# ALLOWED_REFERRERS = ["*.hr-tools.pro"]
-REFERER_ALLOWED_DOMAINS = ["https://s.hr-tools.pro", "https://s-demo1.hr-tools.pro"]
-EMBEDDED_ALLOWED_DOMAINS = ["s.hr-tools.pro", "s-demo1.hr-tools.pro"]
-ALLOWED_REFERRERS = ["https://s.hr-tools.pro", "https://s-demo1.hr-tools.pro"]
 
 DASHBOARD_RBAC = True
 
