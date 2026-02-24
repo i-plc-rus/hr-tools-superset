@@ -45,7 +45,7 @@ GUEST_TOKEN_JWT_EXP_SECONDS = 300
 
 
 # Настройки CORS (Cross-Origin Resource Sharing)
-ENABLE_CORS = False
+ENABLE_CORS = True
 CORS_OPTIONS = {
     'supports_credentials': True,
     'allow_headers': ['*'],
@@ -55,7 +55,7 @@ CORS_OPTIONS = {
 
 OVERRIDE_HTTP_HEADERS = {'X-Frame-Options': 'ALLOWALL'}
 HTTP_HEADERS={"X-Frame-Options":"ALLOWALL"}
-TALISMAN_ENABLED = False
+TALISMAN_ENABLED = True
 TALISMAN_CONFIG = {
     "content_security_policy": {    
          "frame-ancestors": ["*.hr-tools.pro"],
