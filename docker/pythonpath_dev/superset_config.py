@@ -62,6 +62,8 @@ TALISMAN_CONFIG = {
     }
 }
 
+ALLOWED_REFERERS = ["*.hr-tools.pro"]
+
 DASHBOARD_RBAC = True
 
 DATABASE_DIALECT = os.getenv("DATABASE_DIALECT")
