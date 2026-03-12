@@ -30,10 +30,10 @@ x-superset-volumes:
 services:
   superset-redis:
     image: redis:7
-    container_name: superset_cache
+    container_name: demo_superset_cache
     restart: unless-stopped
     volumes:
-      - redis:/data
+      - demo_redis:/data
     networks:
       - dokploy-network
 
@@ -41,10 +41,10 @@ services:
     env_file:
       - path: .env
     image: postgres:15
-    container_name: superset_db
+    container_name: demo_superset_db
     restart: unless-stopped
     volumes:
-      - db_home:/var/lib/postgresql/data
+      - demo_db_home:/var/lib/postgresql/data
       - ./docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     networks:
       - dokploy-network
@@ -53,7 +53,7 @@ services:
     env_file:
       - path: .env
     image: *superset-image
-    container_name: superset_app
+    container_name: demo_superset_app
     command: ["/app/docker/docker-bootstrap.sh", "app-gunicorn"]
     user: "root"
     restart: unless-stopped
@@ -71,7 +71,7 @@ services:
 
   superset-init:
     image: *superset-image
-    container_name: superset_init
+    container_name: demo_superset_init
     command: ["/app/docker/docker-init.sh"]
     env_file:
       - path: .env
@@ -92,7 +92,7 @@ services:
 
   superset-worker:
     image: *superset-image
-    container_name: superset_worker
+    container_name: demo_superset_worker
     command: ["/app/docker/docker-bootstrap.sh", "worker"]
     env_file:
       - path: .env
@@ -115,7 +115,7 @@ services:
 
   superset-worker-beat:
     image: *superset-image
-    container_name: superset_worker_beat
+    container_name: demo_superset_worker_beat
     command: ["/app/docker/docker-bootstrap.sh", "beat"]
     env_file:
       - path: .env
@@ -133,11 +133,11 @@ services:
       - dokploy-network
 
 volumes:
-  superset_home:
+  demo_superset_home:
     external: false
-  db_home:
+  demo_db_home:
     external: false
-  redis:
+  demo_redis:
     external: false
 
 networks:
