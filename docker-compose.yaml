@@ -49,7 +49,7 @@ services:
     networks:
       - dokploy-network
 
-  superset-demo:
+  superset:
     env_file:
       - path: .env
     image: *superset-image
