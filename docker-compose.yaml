@@ -28,16 +28,16 @@ x-superset-volumes:
   - superset_home_demo:/app/superset_home
 
 services:
-  superset-redis:
+  superset-redis-demo:
     image: redis:7
     container_name: demo_superset_cache
     restart: unless-stopped
     volumes:
       - redis_demo:/data
     networks:
-      - demo-dokploy-network
+      - dokploy-network
 
-  superset-db:
+  superset-db-demo:
     env_file:
       - path: .env
     image: postgres:15
@@ -47,9 +47,9 @@ services:
       - db_home_demo:/var/lib/postgresql/data
       - ./docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     networks:
-      - demo-dokploy-network
+      - dokploy-network
 
-  superset:
+  superset-demo:
     env_file:
       - path: .env
     image: *superset-image
@@ -60,14 +60,14 @@ services:
     ports:
       - 8089:8088
     depends_on:
-      superset-init:
+      superset-init-demo:
         condition: service_completed_successfully
     volumes: *superset-volumes
     environment:
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
       SUPERSET_FEATURE_FLAGS: '{"EMBEDDED_SUPERSET": True, "ENABLE_JAVASCRIPT_CONTROLS": True}'
     networks:
-      - demo-dokploy-network
+      - dokploy-network
 
   superset-init:
     image: *superset-image
@@ -76,9 +76,9 @@ services:
     env_file:
       - path: .env
     depends_on:
-      superset-db:
+      superset-db-demo:
         condition: service_started
-      superset-redis:
+      superset-redis-demo:
         condition: service_started
     user: "root"
     volumes: *superset-volumes
@@ -88,7 +88,7 @@ services:
       SUPERSET_LOAD_EXAMPLES: "${SUPERSET_LOAD_EXAMPLES:-yes}"
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
     networks:
-      - demo-dokploy-network
+      - dokploy-network
 
   superset-worker:
     image: *superset-image
@@ -98,7 +98,7 @@ services:
       - path: .env
     restart: unless-stopped
     depends_on:
-      superset-init:
+      superset-init-demo:
         condition: service_completed_successfully
     user: "root"
     volumes: *superset-volumes
@@ -111,7 +111,7 @@ services:
     environment:
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
     networks:
-      - demo-dokploy-network
+      - dokploy-network
 
   superset-worker-beat:
     image: *superset-image
@@ -121,7 +121,7 @@ services:
       - path: .env
     restart: unless-stopped
     depends_on:
-      superset-init:
+      superset-init-demo:
         condition: service_completed_successfully
     user: "root"
     volumes: *superset-volumes
@@ -130,7 +130,7 @@ services:
     environment:
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
     networks:
-      - demo-dokploy-network
+      - dokploy-network
 
 volumes:
   superset_home_demo:
@@ -141,5 +141,5 @@ volumes:
     external: false
 
 networks:
-  demo-dokploy-network:
+  dokploy-network:
     external: true
