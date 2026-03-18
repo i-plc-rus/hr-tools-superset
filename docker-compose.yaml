@@ -35,7 +35,7 @@ services:
     volumes:
       - redis_demo:/data
     networks:
-      - dokploy-network
+      - demo-dokploy-network
 
   superset-db:
     env_file:
@@ -47,7 +47,7 @@ services:
       - db_home_demo:/var/lib/postgresql/data
       - ./docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     networks:
-      - dokploy-network
+      - demo-dokploy-network
 
   superset:
     env_file:
@@ -67,7 +67,7 @@ services:
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
       SUPERSET_FEATURE_FLAGS: '{"EMBEDDED_SUPERSET": True, "ENABLE_JAVASCRIPT_CONTROLS": True}'
     networks:
-      - dokploy-network
+      - demo-dokploy-network
 
   superset-init:
     image: *superset-image
@@ -88,7 +88,7 @@ services:
       SUPERSET_LOAD_EXAMPLES: "${SUPERSET_LOAD_EXAMPLES:-yes}"
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
     networks:
-      - dokploy-network
+      - demo-dokploy-network
 
   superset-worker:
     image: *superset-image
@@ -111,7 +111,7 @@ services:
     environment:
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
     networks:
-      - dokploy-network
+      - demo-dokploy-network
 
   superset-worker-beat:
     image: *superset-image
@@ -130,7 +130,7 @@ services:
     environment:
       SUPERSET_LOG_LEVEL: "${SUPERSET_LOG_LEVEL:-info}"
     networks:
-      - dokploy-network
+      - demo-dokploy-network
 
 volumes:
   superset_home_demo:
@@ -141,5 +141,5 @@ volumes:
     external: false
 
 networks:
-  dokploy-network:
+  demo-dokploy-network:
     external: true
