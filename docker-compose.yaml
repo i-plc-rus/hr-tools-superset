@@ -69,7 +69,7 @@ services:
     networks:
       - dokploy-network
 
-  superset-init:
+  superset-init-demo:
     image: *superset-image
     container_name: demo_superset_init
     command: ["/app/docker/docker-init.sh"]
@@ -90,7 +90,7 @@ services:
     networks:
       - dokploy-network
 
-  superset-worker:
+  superset-worker-demo:
     image: *superset-image
     container_name: demo_superset_worker
     command: ["/app/docker/docker-bootstrap.sh", "worker"]
@@ -113,7 +113,7 @@ services:
     networks:
       - dokploy-network
 
-  superset-worker-beat:
+  superset-worker-beat-demo:
     image: *superset-image
     container_name: demo_superset_worker_beat
     command: ["/app/docker/docker-bootstrap.sh", "beat"]
